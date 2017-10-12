@@ -8,6 +8,7 @@
   "author": "DarkShark",
   "license": "ISC",
   "dependencies": {
+    "mocha": "^4.0.1",
     "promises-es6-tests": "^0.5.0"
   },
   "devDependencies": {
