@@ -133,6 +133,15 @@ class DevPromise {
 
     return merged.then(() => results);
   }
+  
+  static race(promises) {
+    if ((this.constructor !== DevPromise) && (this !== DevPromise)) {
+      throw TypeError('is invalid');
+    }
+    return new DevPromise((resolve, reject) => {
+      promises.forEach(pr => pr.then(resolve, reject))
+    });
+  }
 }
 
 
