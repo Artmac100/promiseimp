@@ -129,7 +129,7 @@ class DevPromise {
     const results = [];  
     const merged = promises.reduce(
       (init, prItem) => init.then(() => prItem).then(res => results.push(res)),
-      Promise.resolve(null));
+      DevPromise.resolve(null));
 
     return merged.then(() => results);
   }
@@ -142,22 +142,9 @@ class DevPromise {
       promises.forEach(pr => pr.then(resolve, reject))
     });
   }
+
 }
 
 
-const a = new DevPromise((resolve, reject) => {
-  let num = Math.random();
-  let b = num > 0.5 ? resolve('grate') : reject('qtf');
-})
 
-a
-.then((c => c), (e => e))
-.then((f => console.log(f)), e => console.log(e))
-
-const b = (...p) => {
-  console.log(p)
-}
-
-b([1,1,1,1])
-//DevPromise.all([a, a])
 module.exports =  DevPromise // change to devPromise;
